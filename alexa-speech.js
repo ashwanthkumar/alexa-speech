@@ -131,4 +131,13 @@ Speech.prototype.interjection = function(interjection) {
 	return this;
 }
 
+// possible values of level are strong, moderate and reduced
+Speech.prototype.emphasis = function(emphasis, level) {
+	this.parts.push(function() {
+		level = level || "moderate" // TODO: validate the level value
+		return '<emphasis level="' + level + '">' + emphasis + '</emphasis>';
+	});
+	return this;
+}
+
 exports.Speech = Speech;

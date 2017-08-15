@@ -221,3 +221,37 @@ describe('AlexaSpeech#price', function () {
 		assert.equal('<speak><say-as interpret-as="cardinal">156</say-as> dollars and <say-as interpret-as="cardinal">99</say-as> cents</speak>', speech.render());
 	});
 });
+
+describe('AlexaSpeech#emphasis', function () {
+	it('should say with emphasis', function() {
+		var speech = new AlexaSpeech.Speech();
+
+		speech.emphasis("like him");
+
+		assert.equal('<speak><emphasis level="moderate">like him</emphasis></speak>', speech.render());
+	});
+
+	it('should say as strong emphasis', function() {
+		var speech = new AlexaSpeech.Speech();
+
+		speech.emphasis("like him", "strong");
+
+		assert.equal('<speak><emphasis level="strong">like him</emphasis></speak>', speech.render());
+	});
+
+	it('should say as reduced emphasis', function() {
+		var speech = new AlexaSpeech.Speech();
+
+		speech.emphasis("like him", "reduced");
+
+		assert.equal('<speak><emphasis level="reduced">like him</emphasis></speak>', speech.render());
+	});
+
+	it('should say as moderate emphasis', function() {
+		var speech = new AlexaSpeech.Speech();
+
+		speech.emphasis("like him", "moderate");
+
+		assert.equal('<speak><emphasis level="moderate">like him</emphasis></speak>', speech.render());
+	});
+});
