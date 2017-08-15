@@ -4,14 +4,18 @@ function Speech() {
 	this.parts = [];
 }
 
-Speech.prototype.render = function() {
-	var output = '<speak>';
+Speech.prototype.render = function(skipSpeakTags) {
+	var prefix = '<speak>'
+	var suffix = '</speak>'
+	var output = '';
 
 	for (var i = 0; i < this.parts.length; i++) {
 		output += this.parts[i]();
 	}
 
-	output += '</speak>';
+	if (!skipSpeakTags || false) {
+		output = prefix + output + suffix;
+	}
 	return output;
 }
 

@@ -9,6 +9,12 @@ describe('AlexaSpeech#add', function() {
 		assert.equal('<speak></speak>', speech.render());
 	});
 
+	it('should be empty in light mode', function() {
+		var speech = new AlexaSpeech.Speech();
+
+		assert.equal('', speech.render(true));
+	});
+
 	it('should have single phrase', function() {
 		var speech = new AlexaSpeech.Speech();
 		
